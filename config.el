@@ -54,8 +54,8 @@
   (require 'org-ref)
   (bibtex-set-dialect 'BibTeX)
   (arxiv-get-pdf-add-bibtex-entry (arxiv-maybe-arxiv-id-from-current-kill)
-                                  my/bib-file
-                                  (concat my/pdf-dir "/"))
+                                  bibtex-completion-bibliography
+                                  (concat bibtex-completion-library-path "/"))
   (takenote-capture-noter-file
    (save-window-excursion
      (find-file "~/pdfs/references.bib")
@@ -131,10 +131,10 @@ creates a corresponding org-noter file
                               (substring pdf-year 2)
                               ".pdf"))
          (bibtex-key (substring prefixed-fn 0 (- (length prefixed-fn) 4)))
-         (dest-fn (concat my/pdf-dir "/" prefixed-fn)))
+         (dest-fn (concat bibtex-completion-library-path "/" prefixed-fn)))
     (url-copy-file pdf-url dest-fn)
     (save-window-excursion
-      (find-file my/bib-file)
+      (find-file bibtex-completion-bibliography)
       (goto-char (point-max))
       (when (not (looking-at "^")) (insert "\n"))
       (insert (concat "@misc{" bibtex-key ",\n"
@@ -160,11 +160,11 @@ creates a corresponding org-noter file
                            (substring pdf-year 2)
                            "_" key-slug))
          (bibtex-key (substring pref-key 0 (min 30 (length pref-key))))
-         (dest-fn (concat my/pdf-dir "/" bibtex-key ".pdf")))
+         (dest-fn (concat bibtex-completion-library-path "/" bibtex-key ".pdf")))
     (dired-create-files #'dired-rename-file "Move" (list filename)
                         (lambda (_from) dest-fn) t)
     (save-window-excursion
-      (find-file my/bib-file)
+      (find-file bibtex-completion-bibliography)
       (goto-char (point-max))
       (when (not (looking-at "^")) (insert "\n"))
       (insert (concat "@article{" bibtex-key ",\n"
@@ -257,7 +257,7 @@ marked files"
          (trunc-key (substring pref-key 0 (min 23 (length pref-key))))
          (key (concat (format-time-string "%y%m%d_") trunc-key)))
     (save-window-excursion
-      (find-file my/bib-file)
+      (find-file bibtex-completion-bibliography)
       (goto-char (point-max))
       (when (not (looking-at "^")) (insert "\n"))
       (insert (concat "@book{" key ",\n"
@@ -324,11 +324,11 @@ inbook entries via takenote-move-pdf-to-bibtex-crossref"
          ;; I kind of would like to trim off trailing _ for aesthetic reasons
          (prefixed-fn (concat (format-time-string "%y%m%d_") trunc-basename ".pdf"))
          (key (substring prefixed-fn 0 (- (length prefixed-fn) 4)))
-         (dest-fn (concat my/pdf-dir "/" prefixed-fn)))
+         (dest-fn (concat bibtex-completion-library-path "/" prefixed-fn)))
     (dired-create-files #'dired-rename-file "Move" (list file)
                         (lambda (_from) dest-fn) t)
     (save-window-excursion
-      (find-file my/bib-file)
+      (find-file bibtex-completion-bibliography)
       (goto-char (point-max))
       (when (not (looking-at "^")) (insert "\n"))
       (insert (concat "@inbook{" key ",\n"
