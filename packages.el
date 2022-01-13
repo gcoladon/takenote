@@ -3,6 +3,7 @@
 
 (package! anki-editor)
 (package! org-roam-bibtex)
+(package! org-ref)
 (package! citeproc)
 (package! helm-bibtex)
 (package! websocket)
