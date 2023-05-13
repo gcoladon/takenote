@@ -3,7 +3,7 @@
 (map! :leader
       :desc "Search on arXiv"             "s a" #'takenote-search-on-arxiv
       :desc "Search on scopus"            "s C" #'scopus-basic-search
-      :desc "takenote-get-arxiv"               "r x" #'takenote-get-arxiv
+      :desc "takenote-get-arxiv"          "r x" #'takenote-get-arxiv
       :desc "doi-utils-get-bibtex-pdf"    "r d" #'doi-utils-get-bibtex-entry-pdf
       :desc "orb-note-actions"            "r a" #'orb-note-actions
       :desc "org-noter-create-skeleton"   "r k" #'org-noter-create-skeleton
