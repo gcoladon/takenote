@@ -189,7 +189,7 @@ creates a corresponding org-noter file
 
 ;; following instructions from https://github.com/org-roam/org-roam-bibtex
 (use-package! org-roam-bibtex
-  ;; :after org-roam
+  :after org-roam
   ;; :hook (org-roam-mode . org-roam-bibtex-mode)
   :config
   (require 'org-ref)
