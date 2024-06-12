@@ -58,7 +58,7 @@
                                   (concat bibtex-completion-library-path "/"))
   (takenote-capture-noter-file
    (save-window-excursion
-     (find-file "~/pdfs/references.bib")
+     (find-file "~/org/roam/roam-pdfs/references.bib")
      (goto-char (point-max))
      (bibtex-beginning-of-entry)
      (re-search-forward bibtex-entry-maybe-empty-head)
@@ -94,7 +94,7 @@
 (defun takenote-org-roam-protocol-get-pdf (info)
   "Process an org-protocol://roam-pdf?ref= style url with INFO.
 
-It saves the PDF at the target location into ~/pdfs and also
+It saves the PDF at the target location into ~/org/roam/roam-pdfs and also
 creates a corresponding org-noter file
 
   javascript:location.href = \\='org-protocol://roam-pdf?template=r&url=\\='+ \\
